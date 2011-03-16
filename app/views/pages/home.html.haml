@@ -1,0 +1,19 @@
+%h1.grid_12
+	=link_to "Song Search", root_path
+	
+%div.grid_4
+	%p Which song would you like to suggest?
+	
+	=form_tag "/", :method => :get, :id => 'search-form' do
+		%h1 Search
+		%fieldset
+			=label_tag :song
+			=text_field_tag :song, params[:song], :options => 'autofocus'
+		%fieldset
+			=label_tag :artist
+			=text_field_tag :artist, params[:artist]
+		%fieldset
+			=submit_tag "Search", :name => nil
+
+%div#search-results.grid_8	
+	=render :partial => "search_result", :collection => @search_results

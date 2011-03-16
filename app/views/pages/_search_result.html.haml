@@ -1,0 +1,5 @@
+%ol
+	%li
+		%span.image=image_tag(search_result[:image]) unless search_result[:image].blank?
+		%div.song-name=search_result[:track]
+		#div=" by #{search_result[:artist]}"
