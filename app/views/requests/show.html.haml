@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Track:
+  = @request.track
+%p
+  %b Artist:
+  = @request.artist
+%p
+  %b Points:
+  = @request.points
+
+= link_to 'Edit', edit_request_path(@request)
+\|
+= link_to 'Back', requests_path

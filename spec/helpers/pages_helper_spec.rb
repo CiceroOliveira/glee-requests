@@ -12,9 +12,4 @@ require 'spec_helper'
 # end
 describe PagesHelper do
   pending "add some examples to (or delete) #{__FILE__}"
-  
-  describe "find songs" do
-    results = search_results("one")
-    puts results
-  end
 end

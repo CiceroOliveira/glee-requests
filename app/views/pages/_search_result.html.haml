@@ -1,5 +1,11 @@
-%ol
-	%li
-		%span.image=image_tag(search_result[:image]) unless search_result[:image].blank?
-		%div.song-name=search_result[:track]
-		#div=" by #{search_result[:artist]}"
+%li
+	%ul
+		%li
+			%div.points=points_for(search_result[:track], search_result[:artist])
+			=link_to "Cheer!", requests_path(search_result), :class => 'cheer-link', :method => 'post'
+		%li
+			%div.song-name
+				=search_result[:track]
+				%span
+					=" by #{search_result[:artist]}"
+		%li.image=image_tag(search_result[:image]) unless search_result[:image].blank?

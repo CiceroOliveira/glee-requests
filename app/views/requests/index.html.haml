@@ -1,0 +1,43 @@
+%h1 Top 10 Requests
+
+%div.grid_6
+  %table#top-10
+    %tr
+      %th.position
+      %th Track
+      %th Artist
+      %th Cheers
+      %th
+      %th
+
+    - @requests.each_with_index do |request, index|
+      %tr
+        %td.position= index+1
+        %td= request.track
+        %td= request.artist
+        %td.position= request.points
+        %td=link_to "Cheer!", requests_path({:track => request.track,:artist => request.artist}), :class => 'cheer-link', :method => 'post'
+        %td= link_to 'Slush!', request, :confirm => 'Are you sure?', :class => 'slush-link', :method => :delete
+
+%hr
+
+%h1.grid_12
+  =link_to "Song Search", root_path
+	
+%div.grid_4
+  %p Which song would you like to suggest?
+	
+  =form_tag "/", :method => :get, :id => 'search-form' do
+    %h1 Search
+    %fieldset
+    =label_tag :song
+    =text_field_tag :song, params[:song], :options => 'autofocus'
+    %fieldset
+      =label_tag :artist
+      =text_field_tag :artist, params[:artist]
+    %fieldset
+      =submit_tag "Search", :name => nil
+
+%div#search-results.grid_7
+  %ul
+    =render :partial => "pages/search_result", :collection => @search_results

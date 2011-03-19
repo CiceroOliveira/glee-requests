@@ -1,87 +1,160 @@
 @import "compass/css3/border-radius";
 @import "compass/css3/box-shadow";
 @import "compass/css3/gradient";
+@import "compass/utilities/tables";
 
-.image {
-	float: right;
+$alp-red: #ee3e64;
+$alp-blue: #44accf;
+$alp-green: #b7d84b;
+$alp-yellow: #ebde52;
+$alp-darker-orange: #f95b34;
+$alp-orange: #fa8366;
+$alp-pink: #f36283;
+
+.cheer-link, .slush-link {
+	display: block;
+	background-color: $alp-orange;
+	border: 1px solid #fff;
+	margin-top: 2px;
+	padding: 2px;
+	@include border-radius;
+	text-decoration: none;
+	color: #fff;
+}
+
+.slush-link {
+	background-color: $alp-red;
+	color: $alp-blue;
+}
+
+table {
+	@include table-scaffolding;
+	background-color: #f00;
+	@include border-radius;
+	width: 100%;
+	color: $alp-yellow;
+	@include linear-gradient(color-stops(#f00, #900));
+	@include box-shadow;
+}
+
+th.position, td.position {
+	width: 3em;
+	text-align: center;
+}
+
+th {
+	background-color: #900;
+	color: #fff;
+}
+
+#search-results ul {
+	width: 100%;
+	float: left;
+	list-style: none;
+	margin: 0.5em;
+	
+	li {
+		display: block;
+		
+		ul {
+			color: #fff;
+			padding: 1em;
+			font-size: 1.1em;
+			text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
+			@include linear-gradient(color-stops(#f00, #900));
+			background-color: #fff;
+			@include border-radius(10px);
+			
+			&:hover {
+				@include linear-gradient(color-stops(#900, #300));
+				background-color: #fff;
+			}
+			
+			li {
+				display: block;
+				float: left;
+				
+				&.image {
+					float: right;
+				}
+			}
+		}
+	}
+}
+
+.song-name {
+	color: #ff0;
+	font-size: 1.2em;
+	
+	span{
+		display: block;
+		color: #fff;
+		font-size: 0.8em;
+	}
+	
+}
+
+.points {
+	color: #fff;
+	background-color: $alp-green;
+	padding: 2px;
+	text-align: center;
+	font-size: 1.5em;
+	@include border-radius;
+	border: 1px solid #fff;
 }
 
 #search-form {
 	background-color: #ccc;
 	padding: 10px;
 	@include border-radius(10px);
-}
-
-#search-results ol {
-	list-style: none;
-	margin: 0.5em;
-}
-
-#search-results ol li {
-	color: #fff;
-	padding: 1em;
-	font-size: 1.1em;
-	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
-	@include linear-gradient(color-stops(#f00, #900));
-	background-color: #fff;
-	@include border-radius(10px);
-}
-
-#search-results ol li:hover {
-	@include linear-gradient(color-stops(#900, #300));
-	background-color: #fff;
-}
-
-.song-name {
-	color: #ff0;
-	font-size: 1.2em;
-}
-
-#search-form fieldset {
-	margin: 0 0 10px 0;
-}
-
-#search-form label {
-	display: block;
-	font-weight: bold;
-	line-height: 1.4em;
-	color: #666;
-	color: rgba(0, 0, 0, 0.6);
-	text-shadow: 0 1px 1px #fff;
-}
-
-#search-form fieldset:last-child {
-	margin: 0;
-}
-
-#search-form input[type="text"] {
-	width: 215px;
-	padding: 5px 8px;
-	font-size: 1.2em;
-	color: #666;
-	border: none;
-	background-image: -webkit-gradient(linear, 
-		0% 0%, 0% 12%, from(#999), to(#fff));
-	background-image: -moz-linear-gradient(0% 12%	
-		90deg, #fff, #999);
-	background-color: #fff;
-	@include border-radius;
-}
-
-#search-form input[type="text"]:focus {
-	@include box-shadow(rgba(51, 204, 255, 0.5), 0, 0, 12px);
-}
-
-#search-form input[type="submit"] {
-	padding: 8px 15px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	line-height: 1;
-	color: #444;
-	border: none;
-	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
-	@include linear-gradient(color-stops(#fff, #bbb));
-	background-color: #fff;
-	@include border-radius(23px);
-	@include box-shadow(rgba(0, 0, 0, 0.5), 0, 1px, 2px);
+	
+	fieldset {
+		margin: 0 0 10px 0;
+	}
+	
+	fieldset:last-child {
+		margin: 0;
+	}
+	
+	label {
+		display: block;
+		font-weight: bold;
+		line-height: 1.4em;
+		color: #666;
+		color: rgba(0, 0, 0, 0.6);
+		text-shadow: 0 1px 1px #fff;
+	}
+	
+	input[type="text"] {
+		width: 215px;
+		padding: 5px 8px;
+		font-size: 1.2em;
+		color: #666;
+		border: none;
+		background-image: -webkit-gradient(linear, 
+			0% 0%, 0% 12%, from(#999), to(#fff));
+		background-image: -moz-linear-gradient(0% 12%	
+			90deg, #fff, #999);
+		background-color: #fff;
+		@include border-radius;
+		
+		&:focus {
+			@include box-shadow(rgba(51, 204, 255, 0.5), 0, 0, 12px);
+		}
+	}
+	
+	input[type="submit"] {
+		padding: 8px 15px;
+		font-family: Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		line-height: 1;
+		color: #444;
+		border: none;
+		text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
+		@include linear-gradient(color-stops(#fff, #bbb));
+		background-color: #fff;
+		@include border-radius(23px);
+		@include box-shadow(rgba(0, 0, 0, 0.5), 0, 1px, 2px);
+	}
 }
